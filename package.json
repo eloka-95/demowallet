@@ -8,7 +8,6 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:variables": "node utilities/design-system/generate-css-variables.js",
     "prestart": "npm run generate:variables",
     "prebuild": "npm run generate:variables"
   },
