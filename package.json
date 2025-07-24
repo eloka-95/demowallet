@@ -7,9 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "prestart": "npm run generate:variables",
-    "prebuild": "npm run generate:variables"
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.10.0",
