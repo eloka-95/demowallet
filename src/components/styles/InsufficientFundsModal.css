@@ -1,0 +1,151 @@
+:root {
+  /* Web3 Color Palette */
+  --primary: #6366f1; /* Indigo - Primary brand color */
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+
+  --secondary: #10b981; /* Emerald - For success/positive actions */
+  --secondary-dark: #059669;
+
+  --accent: #f59e0b; /* Amber - For highlights/attention */
+  --accent-dark: #d97706;
+
+  --dark: #1e293b; /* Dark slate - For text and dark elements */
+  --darker: #0f172a; /* Even darker for backgrounds */
+
+  --light: #f8fafc; /* Light background */
+  --lighter: #ffffff; /* Pure white for cards */
+
+  --danger: #ef4444; /* Red - For errors/danger */
+  --success: #10b981; /* Same as secondary */
+  --warning: #f59e0b; /* Same as accent */
+
+  --gradient-start: #6366f1; /* Gradient colors */
+  --gradient-end: #8b5cf6;
+
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+
+  --danger-dark: #dc2626;
+  --danger-light: #fca5a5;
+}
+
+/* Insufficient Funds Modal Styles */
+.insufficient-funds-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.insufficient-funds-content {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--darker);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  text-align: center;
+  animation: modalEnter 0.3s ease-out;
+}
+
+.insufficient-funds-icon {
+  color: var(--danger);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.insufficient-funds-title {
+  color: var(--danger);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.insufficient-funds-message {
+  color: var(--light);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.insufficient-funds-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.insufficient-funds-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.insufficient-funds-button-primary {
+  background-color: var(--danger);
+  color: white;
+  border: none;
+}
+
+.insufficient-funds-button-primary:hover {
+  background-color: var(--danger-dark);
+}
+
+.insufficient-funds-button-secondary {
+  background-color: transparent;
+  color: var(--light);
+  border: 1px solid var(--light);
+}
+
+.insufficient-funds-button-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Update these styles in your InsufficientFundsModal.css */
+.balance-comparison {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem; /* Reduced from default size */
+}
+
+.balance-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  align-items: center; /* Better vertical alignment */
+}
+
+.balance-label {
+  color: var(--light);
+  opacity: 0.8;
+  font-size: 0.9rem; /* Explicit size for labels */
+}
+
+.balance-amount {
+  font-weight: 600;
+  color: var(--light);
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.95rem; /* Slightly larger than label for hierarchy */
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

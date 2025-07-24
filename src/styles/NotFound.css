@@ -1,0 +1,207 @@
+/* SettingsPage.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+:root {
+  /* Web3 Color Palette */
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary: #10b981;
+  --secondary-dark: #059669;
+  --accent: #f59e0b;
+  --accent-dark: #d97706;
+  --dark: #1e293b;
+  --darker: #0f172a;
+  --light: #f8fafc;
+  --lighter: #ffffff;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --gradient-start: #6366f1;
+  --gradient-end: #8b5cf6;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--darker), var(--dark));
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.not-found-glass-card {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.not-found-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.not-found-illustration {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.web3-404 {
+  position: relative;
+  font-size: 120px;
+  font-weight: 800;
+  background: linear-gradient(to right, var(--primary), var(--primary-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  z-index: 2;
+}
+
+.polygon-1,
+.polygon-2,
+.polygon-3 {
+  position: absolute;
+  background: rgba(99, 102, 241, 0.2);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.polygon-1 {
+  width: 80px;
+  height: 70px;
+  top: 20px;
+  left: 10px;
+  transform: rotate(15deg);
+  animation: float 6s ease-in-out infinite;
+}
+
+.polygon-2 {
+  width: 60px;
+  height: 50px;
+  bottom: 30px;
+  right: 20px;
+  transform: rotate(-30deg);
+  animation: float 8s ease-in-out infinite reverse;
+  background: rgba(139, 92, 246, 0.2);
+}
+
+.polygon-3 {
+  width: 40px;
+  height: 35px;
+  bottom: 10px;
+  left: 30px;
+  transform: rotate(45deg);
+  animation: float 7s ease-in-out infinite 2s;
+  background: rgba(75, 85, 99, 0.2);
+}
+
+.not-found-title {
+  color: var(--lighter);
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.not-found-text {
+  color: var(--light);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 400px;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.not-found-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.not-found-button.primary {
+  background: linear-gradient(to right, var(--primary), var(--primary-light));
+  color: white;
+}
+
+.not-found-button.primary:hover {
+  background: linear-gradient(to right, var(--primary-dark), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.not-found-button.secondary {
+  background: transparent;
+  color: var(--primary-light);
+  border: 1px solid var(--primary-light);
+}
+
+.not-found-button.secondary:hover {
+  background: rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(15deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(15deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .not-found-glass-card {
+    padding: 30px 20px;
+  }
+
+  .not-found-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .not-found-button {
+    width: 100%;
+  }
+
+  .web3-404 {
+    font-size: 80px;
+  }
+
+  .not-found-illustration {
+    width: 150px;
+    height: 150px;
+  }
+}

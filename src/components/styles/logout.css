@@ -1,0 +1,14 @@
+/* Add to your CSS file */
+.logout-button {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.logout-button:hover {
+    background: #cc0000;
+}

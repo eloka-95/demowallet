@@ -1,0 +1,408 @@
+/* Home.css - Web3 Theme */
+:root {
+  /* Web3 Color Palette */
+  --primary: #6366f1; /* Indigo - Primary brand color */
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+
+  --secondary: #10b981; /* Emerald - For success/positive actions */
+  --secondary-dark: #059669;
+
+  --accent: #f59e0b; /* Amber - For highlights/attention */
+  --accent-dark: #d97706;
+
+  --dark: #1e293b; /* Dark slate - For text and dark elements */
+  --darker: #0f172a; /* Even darker for backgrounds */
+
+  --light: #f8fafc; /* Light background */
+  --lighter: #ffffff; /* Pure white for cards */
+
+  --danger: #ef4444; /* Red - For errors/danger */
+  --success: #10b981; /* Same as secondary */
+  --warning: #f59e0b; /* Same as accent */
+
+  --gradient-start: #6366f1; /* Gradient colors */
+  --gradient-end: #8b5cf6;
+
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--darker), #1a1e2e);
+  padding: 1rem;
+  color: var(--light);
+}
+
+@media (min-width: 768px) {
+  .home-container {
+    padding: 2rem;
+  }
+}
+
+.header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--lighter);
+  margin: 0;
+}
+
+.wallet-connect {
+  background: linear-gradient(
+    to right,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.wallet-connect:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.balance-card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.balance-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.balance-title svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.balance-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--lighter);
+  margin-bottom: 1.5rem;
+  font-family: "Space Mono", monospace;
+}
+
+.flow-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.flow-card {
+  flex: 1;
+  min-width: 150px;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: rgba(30, 41, 59, 0.7);
+  border: var(--card-border);
+}
+
+.in-card {
+  border-left: 4px solid var(--secondary);
+}
+
+.out-card {
+  border-left: 4px solid var(--danger);
+}
+
+.flow-label {
+  font-size: 0.875rem;
+  color: var(--primary-light);
+  margin-bottom: 0.5rem;
+}
+
+.flow-amount {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: "Space Mono", monospace;
+}
+
+.in-amount {
+  color: var(--secondary);
+}
+
+.out-amount {
+  color: var(--danger);
+}
+
+.actions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.action-button {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.action-button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.send-button {
+  background: linear-gradient(
+    to right,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  color: white;
+}
+
+.send-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+}
+
+.receive-button {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.receive-button:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.buy-button {
+  background-color: var(--accent);
+  color: var(--darker);
+}
+
+.buy-button:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+}
+
+.x-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--light);
+}
+
+.x-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.waite-button {
+  background-color: var(--danger);
+  color: white;
+}
+
+.waite-button:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+.holdings-card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  padding: 1.5rem;
+}
+
+.holdings-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.holdings-title svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.holdings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.holding-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  background: rgba(30, 41, 59, 0.3);
+  border: var(--card-border);
+}
+
+.holding-item:hover {
+  background: rgba(30, 41, 59, 0.6);
+  transform: translateY(-2px);
+}
+
+.holding-name {
+  font-weight: 600;
+  color: var(--lighter);
+  margin-bottom: 0.25rem;
+}
+
+.holding-amount {
+  font-size: 0.875rem;
+  color: var(--primary-light);
+}
+
+.holding-value {
+  font-weight: 600;
+  color: var(--lighter);
+  text-align: right;
+  margin-bottom: 0.25rem;
+}
+
+.holding-change {
+  font-size: 0.875rem;
+  text-align: right;
+}
+
+.positive-change {
+  color: var(--secondary);
+}
+
+.negative-change {
+  color: var(--danger);
+}
+
+/* Web3 specific elements */
+.token-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.chain-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--primary-light);
+}
+
+/* Add these to your existing Home.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.settings-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--dark);
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.dark .settings-button {
+  color: var(--light);
+}
+
+.settings-button:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+  transform: rotate(30deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-button {
+    padding: 0.25rem;
+    font-size: 1rem;
+  }
+}
+
+
+.subtle-icon {
+  color:var(--lighter);
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.settings-button:hover .subtle-icon {
+  color: var(--primary);
+  opacity: 1;
+  transform: rotate(30deg);
+}
+.micro-fluctuations span {
+  transition: all 0.4s ease;
+  display: inline-block;
+}

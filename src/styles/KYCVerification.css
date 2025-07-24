@@ -1,0 +1,464 @@
+/* SettingsPage.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Web3 Color Palette */
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary: #10b981;
+  --secondary-dark: #059669;
+  --accent: #f59e0b;
+  --accent-dark: #d97706;
+  --dark: #1e293b;
+  --darker: #0f172a;
+  --light: #f8fafc;
+  --lighter: #ffffff;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --gradient-start: #6366f1;
+  --gradient-end: #8b5cf6;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* KYC Verification Styles */
+.kyc-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--darker);
+  padding: 2rem;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+}
+
+.kyc-card {
+  background: linear-gradient(
+    145deg,
+    rgba(30, 41, 59, 0.8),
+    rgba(15, 23, 42, 0.9)
+  );
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  backdrop-filter: blur(10px);
+  color: var(--light);
+  position: relative;
+  overflow: hidden;
+}
+
+.kyc-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(15, 23, 42, 0) 70%
+  );
+  z-index: -1;
+}
+
+.kyc-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.kyc-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--light);
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--light);
+  font-weight: 600;
+  position: relative;
+}
+
+.step.active {
+  background: var(--primary);
+  color: white;
+}
+
+.step.completed {
+  background: var(--success);
+  color: white;
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  width: 1.5rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  right: -1.5rem;
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+.kyc-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.step-icon {
+  margin-bottom: 1.5rem;
+}
+
+.kyc-step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--light);
+}
+
+.kyc-step p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  max-width: 80%;
+}
+
+.kyc-input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--dark);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.document-options {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.document-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.document-options label:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.document-options input[type="radio"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.document-options input[type="radio"]:checked {
+  border-color: var(--primary);
+}
+
+.document-options input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.upload-box {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.upload-box.large {
+  padding: 3rem;
+}
+
+.upload-box label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.upload-box:hover {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.requirements {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.requirements h4 {
+  margin-bottom: 0.75rem;
+  color: var(--light);
+}
+
+.requirements ul {
+  padding-left: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.kyc-primary-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.kyc-primary-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+}
+
+.kyc-primary-btn:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.kyc-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.success-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Back button styles (same as before) */
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--light);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .kyc-container {
+    padding: 1.5rem;
+    padding-top: 6rem;
+  }
+
+  .kyc-card {
+    padding: 1.5rem;
+  }
+
+  .back-button {
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .kyc-container {
+    padding: 1rem;
+    padding-top: 5rem;
+  }
+
+  .kyc-card {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .document-options {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Document Preview Styles */
+.document-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.document-preview img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.selfie-preview img {
+  max-height: 300px;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--danger);
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: var(--danger);
+  transform: scale(1.1);
+}
+
+/* Upload box adjustments for preview */
+.upload-box {
+  min-height: 150px;
+  position: relative;
+}
+
+.upload-box.large {
+  min-height: 250px;
+}
+
+/* Responsive adjustments for previews */
+@media (max-width: 768px) {
+  .document-preview img {
+    max-height: 150px;
+  }
+
+  .selfie-preview img {
+    max-height: 200px;
+  }
+
+  .upload-box {
+    min-height: 120px;
+  }
+
+  .upload-box.large {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .document-preview img {
+    max-height: 120px;
+  }
+
+  .selfie-preview img {
+    max-height: 150px;
+  }
+
+  .upload-box {
+    min-height: 100px;
+  }
+
+  .upload-box.large {
+    min-height: 150px;
+  }
+}

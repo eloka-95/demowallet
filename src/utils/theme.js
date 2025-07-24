@@ -1,0 +1,100 @@
+export const theme = {
+    colors: {
+        primary: {
+            50: '#e0e7ff',
+            100: '#c7d2fe',
+            200: '#a5b4fc',
+            300: '#818cf8',
+            400: '#6366f1',
+            500: '#4f46e5',
+            600: '#4338ca',
+            700: '#3730a3',
+            800: '#312e81',
+            900: '#1e1b4b',
+            main: '#6366f1',
+            dark: '#4f46e5',
+            light: '#818cf8',
+        },
+        secondary: {
+            50: '#ecfdf5',
+            100: '#d1fae5',
+            200: '#a7f3d0',
+            300: '#6ee7b7',
+            400: '#34d399',
+            500: '#10b981',
+            600: '#059669',
+            700: '#047857',
+            800: '#065f46',
+            900: '#064e3b',
+            main: '#10b981',
+            dark: '#059669',
+        },
+        accent: {
+            50: '#fffbeb',
+            100: '#fef3c7',
+            200: '#fde68a',
+            300: '#fcd34d',
+            400: '#fbbf24',
+            500: '#f59e0b',
+            600: '#d97706',
+            700: '#b45309',
+            800: '#92400e',
+            900: '#78350f',
+            main: '#f59e0b',
+            dark: '#d97706',
+        },
+        danger: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            200: '#fecaca',
+            300: '#fca5a5',
+            400: '#f87171',
+            500: '#ef4444',
+            600: '#dc2626',
+            700: '#b91c1c',
+            800: '#991b1b',
+            900: '#7f1d1d',
+            main: '#ef4444',
+        },
+        neutral: {
+            50: '#f8fafc',
+            100: '#f1f5f9',
+            200: '#e2e8f0',
+            300: '#cbd5e1',
+            400: '#94a3b8',
+            500: '#64748b',
+            600: '#475569',
+            700: '#334155',
+            800: '#1e293b',
+            900: '#0f172a',
+            dark: '#1e293b',
+            darker: '#0f172a',
+            light: '#f8fafc',
+            lighter: '#ffffff',
+        },
+        gradients: {
+            primary: ['#6366f1', '#8b5cf6'],
+        },
+    },
+    effects: {
+        shadow: {
+            card: '0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1)',
+            button: '0 2px 4px rgba(0, 0, 0, 0.2)',
+        },
+        border: {
+            card: '1px solid rgba(255, 255, 255, 0.1)',
+        },
+        transition: 'all 0.2s ease',
+    },
+    typography: {
+        fontFamily: {
+            main: 'Inter, sans-serif',
+            mono: '"Space Mono", monospace',
+        },
+    },
+};
+
+// Helper function to access theme values
+export const getThemeValue = (path) => {
+    return path.split('.').reduce((obj, key) => (obj && obj[key] !== undefined ? obj[key] : null), theme);
+  };
