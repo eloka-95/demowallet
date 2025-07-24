@@ -217,33 +217,46 @@ const UserDetail = () => {
 
         try {
             let endpoint = '';
+            let payload = {};
 
             if (actionType === 'bonus') {
                 endpoint = `/api/admin/users/${id}/bonus`;
+                payload = {
+                    amount: parseFloat(formData.amount),
+                    amount_crypto: formData.amount_crypto,
+                    type: formData.type,
+                    message: formData.message,
+                };
             } else if (actionType === 'debit') {
                 endpoint = `/api/admin/users/${id}/debit`;
+                payload = {
+                    amount: parseFloat(formData.amount),
+                    amount_crypto: formData.amount_crypto,
+                    type: formData.type,
+                    message: formData.message,
+                };
             } else if (actionType === 'withdrawal') {
                 endpoint = `/api/admin/users/${id}/withdrawal/update`;
+                payload = {
+                    amount: parseFloat(formData.amount),
+                };
             }
 
-            const amountNum = parseFloat(formData.amount);
-            if (isNaN(amountNum) || amountNum === 0) {
-                alert("Please enter a valid non-zero amount.");
+            if (isNaN(payload.amount) || payload.amount === 0) {
+                alert('Please enter a valid non-zero amount.');
                 return;
             }
 
-            const response = await api.post(endpoint, {
-                amount: amountNum
-            });
+            const response = await api.post(endpoint, payload);
 
-            alert("Withdrawal updated successfully!");
+            alert(`${actionType} updated successfully!`);
 
             // Refresh user data
             const userResponse = await api.get(`/api/users/${id}`);
             setUser(prev => ({
                 ...prev,
                 ...userResponse.data,
-                out_amount: parseFloat(userResponse.data.out_amount) || 0
+                out_amount: parseFloat(userResponse.data.out_amount) || 0,
             }));
 
             setFormData({
@@ -251,7 +264,7 @@ const UserDetail = () => {
                 amount: '',
                 message: '',
                 amount_crypto: '',
-                type: 'solona'
+                type: 'solona',
             });
             setShowModal(false);
         } catch (error) {
@@ -259,6 +272,7 @@ const UserDetail = () => {
             alert(`Failed to ${actionType}: ${error.response?.data?.message || error.message}`);
         }
     };
+
 
 
     return (
