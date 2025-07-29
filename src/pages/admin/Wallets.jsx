@@ -195,14 +195,15 @@ const AdminWallets = () => {
                           </span>
                         </td>
                         <td className="admin-wallet-td barcode">
+
                           {wallet.bar_code ? (
                             <img
                               src={`${BACKEND_URL}/storage/${wallet.bar_code}`}
                               alt="Wallet barcode"
                               className="admin-wallet-barcode"
                             />
-
                           ) : 'N/A'}
+
                         </td>
                         <td className="admin-wallet-td actions">
                           <div className="admin-wallet-actions">

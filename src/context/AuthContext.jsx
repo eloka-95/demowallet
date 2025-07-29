@@ -9,8 +9,9 @@ export function AuthProvider({ children }) {
     const [userRole, setUserRole] = useState(null);
     const [userStatus, setUserStatus] = useState(null);
     const [isBlocked, setIsBlocked] = useState(false);
-    const [adminStats, setAdminStats] = useState(null); // New state for admin stats
+    const [adminStats, setAdminStats] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [lastActivity, setLastActivity] = useState(Date.now());
     const navigate = useNavigate();
 
     // Helper function to store auth data
@@ -19,7 +20,8 @@ export function AuthProvider({ children }) {
         setUserRole(user.user_role);
         setUserStatus(user.user_status);
         setIsBlocked(user.user_blocked);
-        setAdminStats(user.user_role === 'admin' ? stats : null); // Store stats only for admins
+        setAdminStats(user.user_role === 'admin' ? stats : null);
+        setLastActivity(Date.now()); // Update activity time on login
 
         if (token) {
             localStorage.setItem("authToken", token);
@@ -27,6 +29,8 @@ export function AuthProvider({ children }) {
             localStorage.setItem("userRole", user.user_role);
             localStorage.setItem("userStatus", user.user_status);
             localStorage.setItem("isBlocked", user.user_blocked);
+            localStorage.setItem("lastActivity", Date.now().toString());
+
             if (user.user_role === 'admin' && stats) {
                 localStorage.setItem("adminStats", JSON.stringify(stats));
             }
@@ -40,13 +44,14 @@ export function AuthProvider({ children }) {
         setUserRole(null);
         setUserStatus(null);
         setIsBlocked(false);
-        setAdminStats(null); // Clear admin stats
+        setAdminStats(null);
         localStorage.removeItem("authToken");
         localStorage.removeItem("authUser");
         localStorage.removeItem("userRole");
         localStorage.removeItem("userStatus");
         localStorage.removeItem("isBlocked");
-        localStorage.removeItem("adminStats"); // Remove admin stats
+        localStorage.removeItem("adminStats");
+        localStorage.removeItem("lastActivity");
         delete api.defaults.headers.common["Authorization"];
     };
 
@@ -59,6 +64,14 @@ export function AuthProvider({ children }) {
             const storedStatus = localStorage.getItem("userStatus");
             const storedBlocked = localStorage.getItem("isBlocked");
             const storedAdminStats = localStorage.getItem("adminStats");
+            const storedActivity = localStorage.getItem("lastActivity");
+
+            // Check if session is expired (24 hours of inactivity)
+            if (storedActivity && Date.now() - parseInt(storedActivity) > 86400000) {
+                clearAuthData();
+                setLoading(false);
+                return;
+            }
 
             if (storedToken && storedUser) {
                 try {
@@ -87,6 +100,42 @@ export function AuthProvider({ children }) {
         checkAuthStatus();
     }, []);
 
+    // Track user activity
+    useEffect(() => {
+        const activities = ['mousemove', 'keydown', 'scroll', 'click', 'touchstart'];
+
+        const updateActivity = () => {
+            const now = Date.now();
+            setLastActivity(now);
+            localStorage.setItem("lastActivity", now.toString());
+        };
+
+        // Add event listeners for user activity
+        activities.forEach(event => {
+            window.addEventListener(event, updateActivity);
+        });
+
+        return () => {
+            activities.forEach(event => {
+                window.removeEventListener(event, updateActivity);
+            });
+        };
+    }, []);
+
+    // Check for inactivity and log out if needed
+    useEffect(() => {
+        const checkInactivity = () => {
+            const storedActivity = localStorage.getItem("lastActivity");
+            if (storedActivity && Date.now() - parseInt(storedActivity) > 86400000) {
+                logout();
+            }
+        };
+
+        // Check every 5 minutes
+        const interval = setInterval(checkInactivity, 300000);
+        return () => clearInterval(interval);
+    }, []);
+
     // Login function
     const login = async (email, password) => {
         try {
@@ -109,7 +158,7 @@ export function AuthProvider({ children }) {
             return {
                 success: true,
                 user: response.data.user,
-                admin_stats: response.data.admin_stats // Return admin_stats in response
+                admin_stats: response.data.admin_stats
             };
         } catch (error) {
             clearAuthData();
@@ -145,7 +194,7 @@ export function AuthProvider({ children }) {
         } catch (error) {
             console.error("Logout error:", error);
         } finally {
-            navigate('/login');
+            navigate('/wallet/login');
         }
     };
 
@@ -154,7 +203,7 @@ export function AuthProvider({ children }) {
         userRole,
         userStatus,
         isBlocked,
-        adminStats, // Add adminStats to context value
+        adminStats,
         loading,
         login,
         logout,

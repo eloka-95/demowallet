@@ -127,7 +127,7 @@ export default function Receivecoin() {
                 price_usd: match.price_usd || (usdBalance / (cryptoBalance || 1)),
             });
         } else {
-            navigate('/transfer/receive');
+            navigate('/wallet/transfer/receive');
         }
     }, [coinId, cryptocurrencies, userDetails, navigate]);
 
@@ -159,9 +159,7 @@ export default function Receivecoin() {
 
             const response = await api.post('api/receive-crypto', formData);
 
-            if (response.status === 201) {
-                navigate(`/wallet-details/${formData.coin_name}`);
-            }
+            navigate(`/wallet-details/${formData.coin_name}/${formData.amount_usd}/${formData.amount_coin}`);
         } catch (error) {
             console.error('Transfer error:', error);
             setErrorMessage('Transaction failed. Please try again.');

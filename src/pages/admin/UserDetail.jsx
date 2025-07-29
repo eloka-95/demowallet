@@ -304,7 +304,7 @@ const UserDetail = () => {
                 </div>
                 <div className="action-buttons">
                     <button className="bonus-button" onClick={handleBonus}>
-                        Add Bonus
+                        Add Fund
                     </button>
                     <button className="debit-button" onClick={handleDebit}>
                         Debit User
@@ -316,7 +316,7 @@ const UserDetail = () => {
                             setShowModal(true);
                         }}
                     >
-                        Adjust Withdrawal
+                        Adjust Withdrawal Fund
                     </button>
 
                 </div>

@@ -86,7 +86,7 @@ const AdminUsers = () => {
     };
 
     const handleRowClick = (userId) => {
-        navigate(`/admin/user/${userId}`);
+        navigate(`/wallet/admin/user/${userId}`);
     };
 
     const handleDeleteUser = async (userId, e) => {

@@ -81,9 +81,9 @@ const CoinSelection = () => {
 
     const handleSelectCoin = (coinKey) => {
         if (type === "receive") {
-            navigate(`/receive-transaction/${coinKey}`);
+            navigate(`/wallet/receive-transaction/${coinKey}`);
         } else if (type === "send") {
-            navigate(`/send-transaction/${coinKey}`);
+            navigate(`/wallet/send-transaction/${coinKey}`);
         } else {
             navigate(-1);
         }

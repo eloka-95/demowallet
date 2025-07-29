@@ -7,9 +7,10 @@ import {
 } from 'react-icons/fi';
 import { BsWallet2, BsGraphUp } from 'react-icons/bs';
 import { useData } from '../context/DataContext';
-
 import axios from 'axios';
 import { useConversionRates } from '../context/ConversionRateContext';
+import { formatCurrency } from '../utils/format';
+
 
 const Home = () => {
     const { userDetails, cryptocurrencies, loading } = useData();
@@ -21,15 +22,15 @@ const Home = () => {
     const [downPulse, setDownPulse] = useState(0);
 
 
-      useEffect(() => {
+    useEffect(() => {
         const interval = setInterval(() => {
-          setUpPulse((Math.random() * 0.005).toFixed(4));
-          setDownPulse((Math.random() * 0.005).toFixed(4));
+            setUpPulse((Math.random() * 0.005).toFixed(4));
+            setDownPulse((Math.random() * 0.005).toFixed(4));
         }, 2000);
-    
+
         return () => clearInterval(interval);
-      }, []);
-    
+    }, []);
+
     // Create a mapping between cryptocurrency symbols and their corresponding userDetails keys
     const cryptoToUserKeyMap = {
         'BTC': { balanceKey: 'btc', usdKey: 'btc_usd' },
@@ -101,28 +102,28 @@ const Home = () => {
 
     // Rest of your component remains the same...
     // Fetch live data
-    // useEffect(() => {
-    //     const fetchLivePrices = async () => {
-    //         try {
-    //             const res = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
-    //                 params: {
-    //                     vs_currency: 'usd',
-    //                     ids: 'bitcoin,ethereum,tether,tron,solana,ripple,avalanche,polygon',
-    //                     order: 'market_cap_desc',
-    //                     per_page: 100,
-    //                     page: 1,
-    //                     sparkline: false
-    //                 }
-    //             });
-    //             setLiveData(res.data);
-    //         } catch (error) {
-    //             console.error("Live fetch failed:", error.message);
-    //         } finally {
-    //             setIsFetchingLive(false);
-    //         }
-    //     };
-    //     fetchLivePrices();
-    // }, []);
+    useEffect(() => {
+        const fetchLivePrices = async () => {
+            try {
+                const res = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
+                    params: {
+                        vs_currency: 'usd',
+                        ids: 'bitcoin,ethereum,tether,tron,solana,ripple,avalanche,polygon',
+                        order: 'market_cap_desc',
+                        per_page: 100,
+                        page: 1,
+                        sparkline: false
+                    }
+                });
+                setLiveData(res.data);
+            } catch (error) {
+                console.error("Live fetch failed:", error.message);
+            } finally {
+                setIsFetchingLive(false);
+            }
+        };
+        fetchLivePrices();
+    }, []);
 
     // Generate animated fake fluctuations
     useEffect(() => {
@@ -149,7 +150,11 @@ const Home = () => {
                 <h1><FiHome className="icon" /> Dashboard</h1>
                 <div className="header-right">
                     <LogoutButton />
-                    <Link to="/settings" className="settings-button">
+                    {/* <Link to="/transaction-History" className="wallet-connect">
+                        <FiSettings className="icon subtle-icon" />
+                        History
+                    </Link> */}
+                    <Link to="/wallet/settings" className="settings-button">
                         <FiSettings className="icon subtle-icon" />
                     </Link>
                     <button className="wallet-connect">
@@ -157,36 +162,36 @@ const Home = () => {
                     </button>
                 </div>
             </header>
-
+            {/* transaction-History */}
             {/* Balance Section */}
             <div className="balance-card">
                 <h2 className="balance-title"><BsWallet2 className="icon" /> Current Balance</h2>
-                <p className="balance-amount">${userDetails?.usd_total || 0}</p>
+                <p className="balance-amount">${formatCurrency(userDetails?.usd_total || 0)}</p>
                 <div className="flow-container">
                     <div className="flow-card in-card">
                         <p className="flow-label"><FiArrowDown className="icon" /> Inflow</p>
-                        <p className="flow-amount in-amount">${userDetails?.usd_total || 0}</p>
+                        <p className="flow-amount in-amount">${formatCurrency(userDetails?.usd_total || 0)}</p>
                     </div>
                     <div className="flow-card out-card">
                         <p className="flow-label"><FiArrowUp className="icon" /> Outflow</p>
-                        <p className="flow-amount out-amount">${userDetails?.out_amount || 0}</p>
+                        <p className="flow-amount out-amount">${formatCurrency(userDetails?.out_amount || 0)}</p>
                     </div>
                 </div>
 
                 <div className="actions-container">
-                    <Link className="action-button send-button" to="/send">
+                    <Link className="action-button send-button" to="/wallet/send">
                         <FiSend className="icon" /> Send
                     </Link>
-                    <Link className="action-button receive-button" to="/receive">
+                    <Link className="action-button receive-button" to="/wallet/receive">
                         <FiArrowDown className="icon" /> Receive
                     </Link>
                     <button className="action-button buy-button">
                         <FiDollarSign className="icon" /> Buy
                     </button>
-                    <Link className="action-button x-button" to="/kyc-verification">
+                    <Link className="action-button x-button" to="/wallet/kyc-verification">
                         <FiLink className="icon" /> KYC
                     </Link>
-                    <Link className="action-button waite-button" to="/wallet-connect">
+                    <Link className="action-button waite-button" to="/wallet/wallet-connect">
                         <FiZap className="icon" />Connect Wallet
                     </Link>
                 </div>

@@ -1,31 +1,35 @@
-/* Home.css - Web3 Theme */
 :root {
-  /* Web3 Color Palette */
-  --primary: #6366f1; /* Indigo - Primary brand color */
-  --primary-dark: #4f46e5;
-  --primary-light: #818cf8;
-
-  --secondary: #10b981; /* Emerald - For success/positive actions */
-  --secondary-dark: #059669;
-
-  --accent: #f59e0b; /* Amber - For highlights/attention */
-  --accent-dark: #d97706;
-
-  --dark: #1e293b; /* Dark slate - For text and dark elements */
-  --darker: #0f172a; /* Even darker for backgrounds */
-
-  --light: #f8fafc; /* Light background */
-  --lighter: #ffffff; /* Pure white for cards */
-
-  --danger: #ef4444; /* Red - For errors/danger */
-  --success: #10b981; /* Same as secondary */
-  --warning: #f59e0b; /* Same as accent */
-
-  --gradient-start: #6366f1; /* Gradient colors */
-  --gradient-end: #8b5cf6;
-
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
-  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Primary Colors - Convey trust and professionalism */
+  --primary: #2563eb;       /* Royal Blue - Primary brand color */
+  --primary-dark: #1d4ed8;  /* Darker blue for active states */
+  --primary-light: #3b82f6; /* Lighter blue for hover states */
+  
+  /* Secondary Colors - Financial accents */
+  --secondary: #059669;    /* Deep green for financial growth */
+  --secondary-dark: #047857;
+  
+  /* Neutral Colors - Professional foundation */
+  --dark: #1f2937;         /* Dark gray for text */
+  --darker: #111827;       /* Very dark for backgrounds */
+  --gray: #4b5563;         /* Medium gray for secondary text */
+  --light-gray: #e5e7eb;   /* Light gray for borders */
+  --light: #f9fafb;        /* Off-white for light backgrounds */
+  --lighter: #ffffff;      /* Pure white for cards */
+  
+  /* Accent & Status Colors */
+  --accent: #9333ea;       /* Purple for highlights (sparingly used) */
+  --danger: #dc2626;       /* Red for errors */
+  --warning: #d97706;      /* Amber for warnings */
+  --success: #059669;      /* Green for success (matches secondary) */
+  
+  /* Gradients (use sparingly in financial apps) */
+  --gradient-start: #2563eb;
+  --gradient-end: #4f46e5;
+  
+  /* UI Elements */
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --card-border: 1px solid var(--light-gray);
+  --border-radius: 8px;
 }
 
 .home-container {

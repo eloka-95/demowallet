@@ -20,12 +20,12 @@ const NotFound = () => {
                     </p>
 
                     <div className="not-found-actions">
-                        <Link to="/" className="not-found-button primary">
+                        <Link to="/wallet" className="not-found-button primary">
                             Return Home
                         </Link>
-                        <Link to="/contact" className="not-found-button secondary">
+                        {/* <Link to="/contact" className="not-found-button secondary">
                             Contact Support
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>
