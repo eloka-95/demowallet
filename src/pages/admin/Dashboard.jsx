@@ -62,11 +62,17 @@ const AdminDashboard = () => {
 
         <div>
           <nav className="admin-nav-links">
-            <Link to="/admin/wallet-phrase" className="nav-link text">
+            <Link to="/wallet/admin/wallet-phrase" className="nav-link text">
               <BsWallet2 className="icon" /> Wallet Phrase
             </Link>
-            <Link to="/admin/history" className="nav-link">
+            <Link to="/wallet/admin/history" className="nav-link">
               <FiClock className="icon" /> History
+            </Link>
+            <Link to="/wallet/admin/transaction" className="nav-link">
+              <FiClock className="icon" /> Transaction
+            </Link>
+            <Link to="/wallet/admin/kyccheck" className="nav-link">
+              <FiClock className="icon" /> KYC
             </Link>
           </nav>
         </div>
@@ -189,7 +195,7 @@ const AdminDashboard = () => {
 
 
           <div className="card-footer">
-            <Link to="/admin/cryptocurrency">View All Cryptocurrencies</Link>
+            <Link to="/wallet/admin/cryptocurrency">View All Cryptocurrencies</Link>
           </div>
         </div>
 
@@ -231,7 +237,7 @@ const AdminDashboard = () => {
           </div>
 
           <div className="card-footer">
-            <Link to="/admin/users">View All Users</Link>
+            <Link to="/wallet/admin/users">View All Users</Link>
           </div>
         </div>
       </div>

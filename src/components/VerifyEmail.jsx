@@ -23,7 +23,7 @@ const VerifyEmail = () => {
                 code
             });
 
-            navigate('/login', {
+            navigate('/wallet/login', {
                 state: { message: 'Email verified successfully! Please login.' }
             });
         } catch (error) {

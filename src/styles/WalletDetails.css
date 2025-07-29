@@ -314,3 +314,22 @@
     padding-top: 4rem;
   }
 }
+
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.error-message {
+  color: var(--error-color);
+}
+
+.qr-code-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}

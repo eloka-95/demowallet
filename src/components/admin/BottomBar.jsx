@@ -3,11 +3,11 @@ import { FiUsers, FiDollarSign, FiClock, FiWallet, FiLock } from 'react-icons/fi
 
 export default function AdminBottomBar() {
     const navItems = [
-        { path: '/admin/users', icon: <FiUsers />, text: 'Users' },
-        { path: '/admin/cryptocurrency', icon: <FiDollarSign />, text: 'Crypto' },
-        { path: '/admin/history', icon: <FiClock />, text: 'History' },
-        { path: '/admin/wallets', icon: <FiWallet />, text: 'Wallets' },
-        { path: '/admin/wallet-Phrase', icon: <FiLock />, text: 'Freeze' },
+        { path: '/wallet/admin/users', icon: <FiUsers />, text: 'Users' },
+        { path: '/wallet/admin/cryptocurrency', icon: <FiDollarSign />, text: 'Crypto' },
+        { path: '/wallet/admin/history', icon: <FiClock />, text: 'History' },
+        { path: '/wallet/admin/wallets', icon: <FiWallet />, text: 'Wallets' },
+        { path: '/wallet/admin/wallet-Phrase', icon: <FiLock />, text: 'Freeze' },
     ];
 
     return (

@@ -36,7 +36,7 @@ const ForgotPassword = () => {
                 <button type="submit" className="auth-button primary">Send Reset Link</button>
 
                 <div className="auth-footer">
-                    Remember your password? <Link to="/login" className="auth-link">Sign in</Link>
+                    Remember your password? <Link to="/wallet/login" className="auth-link">Sign in</Link>
                 </div>
             </form>
         </AuthContainer>

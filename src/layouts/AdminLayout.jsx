@@ -27,7 +27,7 @@ const UseAdminLayout = () => {
             {/* Bottom Navigation */}
             <nav className="bottom-nav">
                 <NavLink
-                    to="/admin"
+                    to="/wallet/admin"
                     end
                     className={({ isActive }) =>
                         `nav-button ${isActive ? 'active' : ''}`
@@ -38,7 +38,7 @@ const UseAdminLayout = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/admin/users"
+                    to="/wallet/admin/users"
                     className={({ isActive }) =>
                         `nav-button ${isActive ? 'active' : ''}`
                     }
@@ -48,7 +48,7 @@ const UseAdminLayout = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/admin/cryptocurrency"
+                    to="/wallet/admin/cryptocurrency"
                     className={({ isActive }) =>
                         `nav-button ${isActive ? 'active' : ''}`
                     }
@@ -58,7 +58,7 @@ const UseAdminLayout = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/admin/wallets"
+                    to="/wallet/admin/wallets"
                     className={({ isActive }) =>
                         `nav-button ${isActive ? 'active' : ''}`
                     }
@@ -68,7 +68,7 @@ const UseAdminLayout = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/admin/settings"
+                    to="/wallet/admin/settings"
                     className={({ isActive }) =>
                         `nav-button ${isActive ? 'active' : ''}`
                     }

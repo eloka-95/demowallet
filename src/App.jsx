@@ -4,6 +4,10 @@ import { AuthProvider } from "./context/AuthContext"
 import { DataProvider } from "./context/DataContext"
 import ErrorBoundary from "./components/ErrorBoundary"
 import { ConversionRateProvider } from './context/ConversionRateContext';
+import { WalletProvider } from "./context/WalletContext"
+
+
+
 
 function App() {
   return (
@@ -11,7 +15,9 @@ function App() {
       <AuthProvider>
         <DataProvider >
           <ConversionRateProvider>
-            <AppRoutes />
+            <WalletProvider >
+              <AppRoutes />
+            </WalletProvider>
           </ConversionRateProvider>
         </DataProvider>
       </AuthProvider>

@@ -31,7 +31,7 @@ const Login = () => {
                 // Redirect based on user role
                 switch (result.user.user_role) {
                     case 'admin':
-                        navigate('/admin');
+                        navigate('/wallet/admin');
                         break;
                     default:
                         navigate('/');
@@ -76,7 +76,7 @@ const Login = () => {
                 </div>
 
                 <div className="auth-actions">
-                    <Link to="/forgot-password" className="auth-link">Forgot password?</Link>
+                    <Link to="/wallet/forgot-password" className="auth-link">Forgot password?</Link>
                 </div>
 
                 <button type="submit" className="auth-button primary">
@@ -90,7 +90,7 @@ const Login = () => {
                 </button>
 
                 <div className="auth-footer">
-                    Don't have an account? <Link to="/register" className="auth-link">Sign up</Link>
+                    Don't have an account? <Link to="/wallet/register" className="auth-link">Sign up</Link>
                 </div>
             </form>
         </AuthContainer>

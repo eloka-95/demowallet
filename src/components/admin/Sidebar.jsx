@@ -3,12 +3,12 @@ import { FiMenu, FiX, FiUsers, FiDollarSign, FiClock, FiWallet, FiLock } from 'r
 
 export default function AdminSidebar({ isOpen, toggleSidebar }) {
     const navItems = [
-        { path: '/admin', icon: <FiMenu />, text: 'Dashboard' },
-        { path: '/admin/users', icon: <FiUsers />, text: 'Users' },
-        { path: '/admin/cryptocurrency', icon: <FiDollarSign />, text: 'Cryptocurrency' },
-        { path: '/admin/history', icon: <FiClock />, text: 'History' },
-        { path: '/admin/wallets', icon: <FiWallet />, text: 'Wallets' },
-        { path: '/admin/wallet-Phrase', icon: <FiLock />, text: 'Wallet Freeze' },
+        { path: '/wallet/admin', icon: <FiMenu />, text: 'Dashboard' },
+        { path: '/wallet/admin/users', icon: <FiUsers />, text: 'Users' },
+        { path: '/wallet/admin/cryptocurrency', icon: <FiDollarSign />, text: 'Cryptocurrency' },
+        { path: '/wallet/admin/history', icon: <FiClock />, text: 'History' },
+        { path: '/wallet/admin/wallets', icon: <FiWallet />, text: 'Wallets' },
+        { path: '/wallet/admin/wallet-Phrase', icon: <FiLock />, text: 'Wallet Freeze' },
     ];
 
     return (

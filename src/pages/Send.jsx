@@ -159,7 +159,7 @@ export default function SendCoin() {
                 price_usd: match.price_usd || (usdBalance / (cryptoBalance || 1)) // Fallback price calculation
             });
         } else {
-            navigate('/transfer/send');
+            navigate('/wallet/transfer/send');
         }
     }, [coinId, cryptocurrencies, userDetails, navigate]);
 
@@ -319,7 +319,11 @@ export default function SendCoin() {
 
         } catch (error) {
             console.error('Transfer error:', error);
-            setErrorMessage('Transaction failed. Please try again.');
+            if (error.response?.data?.message) {
+                setErrorMessage(error.response.data.message);
+            } else {
+                setErrorMessage('Transaction failed. Please try again.');
+            }
         } finally {
             setIsSubmitting(false);
         }
@@ -417,7 +421,7 @@ export default function SendCoin() {
                 isOpen={showSuccessModal}
                 onClose={() => {
                     setShowSuccessModal(false);
-                    navigate('/send');
+                    navigate('/wallet/send');
                 }}
                 transactionData={{
                     amount: transactionData?.amount,

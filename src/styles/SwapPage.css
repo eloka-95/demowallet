@@ -1,0 +1,143 @@
+.swap-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--lighter);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+  }
+  
+  .swap-title {
+    color: var(--dark);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .swap-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .swap-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .swap-input-group label {
+    font-size: 0.875rem;
+    color: var(--dark);
+    font-weight: 500;
+  }
+  
+  .swap-input-wrapper {
+    display: flex;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  .swap-input-wrapper input {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .swap-input-wrapper input:focus {
+    box-shadow: 0 0 0 2px var(--primary-light);
+  }
+  
+  .swap-coin-selector {
+    position: relative;
+    min-width: 100px;
+  }
+  
+  .swap-coin-selector select {
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem;
+    border: none;
+    background-color: #f8fafc;
+    appearance: none;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .swap-balance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+  
+  .swap-max-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .swap-max-btn:hover {
+    text-decoration: underline;
+  }
+  
+  .swap-arrow {
+    display: flex;
+    justify-content: center;
+    color: var(--primary);
+  }
+  
+  .swap-button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .swap-button:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  .swap-button:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+  }
+  
+  .swap-error {
+    color: var(--danger);
+    background-color: #fee2e2;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .swap-success {
+    color: var(--success);
+    background-color: #dcfce7;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .swap-rate-info {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: #64748b;
+    text-align: center;
+  }
+  
+  .swap-rate-info p {
+    margin: 0.25rem 0;
+  }

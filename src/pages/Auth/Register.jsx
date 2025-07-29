@@ -67,7 +67,7 @@ const Register = () => {
             setSuccessMessage('Registration successful! Please check your email for verification code.');
 
             // Redirect to verification page
-            navigate('/verify-email', {
+            navigate('/wallet/verify-email', {
                 state: { email: formData.email }
             });
 
@@ -192,7 +192,7 @@ const Register = () => {
                 </button>
 
                 <div className="auth-footer">
-                    Already have an account? <Link to="/login" className="auth-link">Sign in</Link>
+                    Already have an account? <Link to="/wallet/login" className="auth-link">Sign in</Link>
                 </div>
             </form>
         </AuthContainer>

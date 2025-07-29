@@ -39,7 +39,7 @@ const InsufficientFundsModal = ({
                         </p>
                         <div className="support-message">
                             <FaHeadset className="support-icon" />
-                            <p>Need help? Contact our <a href="/support" className="support-link">support team</a>.</p>
+                            <p>Need help? Contact our <span className="support-link">support team</span>.</p>
                         </div>
                     </div>
                 ) : (

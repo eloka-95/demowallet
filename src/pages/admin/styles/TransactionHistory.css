@@ -409,3 +409,96 @@
       flex-direction: column;
     }
   }
+
+  /* Tab Switcher */
+.tab-switcher {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-switcher button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.tab-switcher button.active {
+  color: #3a7bd5;
+  border-bottom-color: #3a7bd5;
+}
+
+.tab-switcher button:hover:not(.active) {
+  color: #333;
+  border-bottom-color: #ddd;
+}
+
+/* Type Badges */
+.type-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.type-badge.send {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.type-badge.receive {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.type-badge.bonus {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.type-badge.debit {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+/* Text Colors */
+.text-success {
+  color: #2e7d32;
+}
+
+.text-danger {
+  color: #c62828;
+}
+
+/* Button Loading Spinner */
+.button-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Disabled button styles */
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Modal button loading states */
+.modal-actions button:disabled {
+  opacity: 0.7;
+}

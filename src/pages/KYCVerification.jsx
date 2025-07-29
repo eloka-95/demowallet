@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaUpload, FaCheck, FaGlobe, FaIdCard, FaTimes } from 'react-icons/fa';
+import { FaArrowLeft, FaUpload, FaCheck, FaGlobe, FaIdCard, FaTimes, FaSpinner } from 'react-icons/fa';
 import '../styles/KYCVerification.css';
+import api from '../api/axios';
 
 const KYCVerification = () => {
     const navigate = useNavigate();
@@ -15,6 +16,9 @@ const KYCVerification = () => {
     const [selfieFile, setSelfieFile] = useState(null);
     const [selfiePreview, setSelfiePreview] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [kycStatus, setKycStatus] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const frontInputRef = useRef(null);
     const backInputRef = useRef(null);
@@ -24,6 +28,33 @@ const KYCVerification = () => {
         'United States', 'Canada', 'United Kingdom', 'Germany', 'France',
         'Japan', 'Australia', 'Singapore', 'South Korea', 'Brazil'
     ];
+
+    useEffect(() => {
+        // Check if user already has KYC status
+        checkKYCStatus();
+    }, []);
+    const checkKYCStatus = async () => {
+        try {
+            setIsLoading(true);
+            const response = await api.get('/api/kyc/status');
+            setKycStatus(response.data.status);
+
+            // If already approved, redirect to dashboard
+            if (response.data.user_verified) {
+                navigate('/dashboard', { replace: true });
+            }
+
+            // If already submitted but pending, show success message
+            if (response.data.status === 'pending') {
+                setStep(4);
+            }
+        } catch (err) {
+            console.error('Error checking KYC status:', err);
+            setError(err.response?.data?.message || 'Failed to check KYC status');
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const handleBack = () => {
         if (step > 1) {
@@ -36,6 +67,18 @@ const KYCVerification = () => {
     const handleFileChange = (e, setFile, setPreview) => {
         const file = e.target.files[0];
         if (file) {
+            // Validate file type and size
+            if (!file.type.match('image.*')) {
+                setError('Please upload an image file');
+                return;
+            }
+
+            if (file.size > 2 * 1024 * 1024) { // 2MB
+                setError('File size should be less than 2MB');
+                return;
+            }
+
+            setError(null);
             setFile(file);
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -67,15 +110,48 @@ const KYCVerification = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        setTimeout(() => {
-            setIsSubmitting(false);
+        setError(null);
+
+        try {
+            const formData = new FormData();
+            formData.append('country', country);
+            formData.append('document_type', documentType);
+            formData.append('front_document', frontFile);
+
+            if (documentType !== 'passport' && backFile) {
+                formData.append('back_document', backFile);
+            }
+
+            formData.append('selfie', selfieFile);
+
+            const response = await api.post('/api/kyc/submit', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
             setStep(4); // Success step
-        }, 2000);
+        } catch (err) {
+            console.error('Error submitting KYC:', err);
+            setError(err.response?.data?.message || 'Failed to submit KYC documents');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
+
+    if (isLoading) {
+        return (
+            <div className="kyc-container">
+                <div className="loading-spinner">
+                    <FaSpinner className="spinner-icon" />
+                    <p>Checking your verification status...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="kyc-container">
@@ -85,6 +161,15 @@ const KYCVerification = () => {
             </button>
 
             <div className="kyc-card">
+                {error && (
+                    <div className="kyc-error-alert">
+                        {error}
+                        <button onClick={() => setError(null)} className="close-error">
+                            <FaTimes />
+                        </button>
+                    </div>
+                )}
+
                 <div className="kyc-header">
                     <h2>Identity Verification</h2>
                     <div className="progress-steps">
@@ -288,7 +373,12 @@ const KYCVerification = () => {
                             onClick={handleSubmit}
                             disabled={!selfieFile || isSubmitting}
                         >
-                            {isSubmitting ? 'Verifying...' : 'Submit Verification'}
+                            {isSubmitting ? (
+                                <>
+                                    <FaSpinner className="spinner" />
+                                    Submitting...
+                                </>
+                            ) : 'Submit Verification'}
                         </button>
                     </div>
                 )}
@@ -302,7 +392,7 @@ const KYCVerification = () => {
                         <p>Your documents have been received and are being reviewed. We'll notify you once your verification is complete.</p>
                         <button
                             className="kyc-primary-btn"
-                            onClick={() => navigate('/')}
+                            onClick={() => navigate('/wallet')}
                         >
                             Return to Dashboard
                         </button>
